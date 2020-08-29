@@ -11,7 +11,7 @@ interface IPagination {
   prev: () => void
   jump: (page: number) => void
   currentPage: number
-  maxPage: number
+  pagination: number[]
 }
 
 const Pagination: React.FC<IPagination> = ({
@@ -19,15 +19,10 @@ const Pagination: React.FC<IPagination> = ({
   prev,
   jump,
   currentPage,
-  maxPage,
   firstPage,
   lastPage,
+  pagination,
 }) => {
-  const pageNumbers = []
-
-  for (let i = 1; i <= maxPage; i++) {
-    pageNumbers.push(i)
-  }
 
   return (
     <Wrapper>
@@ -39,7 +34,7 @@ const Pagination: React.FC<IPagination> = ({
       </Button>
 
       <MyPagination>
-        {pageNumbers.map(number => (
+        {pagination.map((number: number) => (
           <Pager key={number} active={currentPage === number} onClick={() => jump(number)}>
             {number}
           </Pager>

@@ -10,7 +10,7 @@ const AppContainer = () => {
   React.useEffect(() => {
     const fetchData = async (): Promise<void> => {
       setLoading(true)
-      const response = await fetch(`https://jsonplaceholder.typicode.com/photos?albumId=1`)
+      const response = await fetch(`https://jsonplaceholder.typicode.com/photos`)
       const data = await response.json()
       setData(data)
       setLoading(false)

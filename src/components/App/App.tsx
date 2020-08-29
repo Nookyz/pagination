@@ -10,16 +10,20 @@ interface IApp {
 }
 
 const App: React.FC<IApp> = ({ data }) => {
+  // usePagination - params
+  // 1 - array of some data
+  // 2 - items per page
+  // 3 - number of buttons in pagination
   const {
     next,
     prev,
     jump,
     currentData,
     currentPage,
-    maxPage,
     firstPage,
     lastPage,
-  } = usePagination(data, 4)
+    pagination,
+  } = usePagination(data, 10, 5)
 
   return (
     <Container>
@@ -31,9 +35,9 @@ const App: React.FC<IApp> = ({ data }) => {
         prev={prev}
         jump={jump}
         currentPage={currentPage}
-        maxPage={maxPage}
         firstPage={firstPage}
         lastPage={lastPage}
+        pagination={pagination}
       />
     </Container>
   )
